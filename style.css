@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:700);
+
+body {
+color: #34495e;
+font: 14px/1.231 "Lato", sans-serif; }
+
+h3 {
+font-size: 19px;
+font-weight: 700;
+line-height: 23px; 
+margin: 0;
+padding: 10px 0;
+text-rendering: optimizelegibility;}
+
+h4 {
+font-size: 18px;
+font-weight: 500;
+margin-top: 4px;
+line-height: 20px;
+text-rendering: optimizelegibility;}
+
+.span4 {
+width: 250px;position: absolute;
+float: left;
+height: 100vh;
+overflow-y: auto; }
+
+[class*="span"] {
+float: left;
+min-height: 1px;
+margin-left: 20px; }
+
+.mrm, .mhm, .mam {
+margin-right: 10px; }
+
+.todo {
+background-color: #2c3e50;
+border-radius: 8px 8px 6px 6px;
+color: #fff;
+margin-bottom: 20px; }
+
+.todo-header {
+background: #1ABC9C 92% center no-repeat;
+background-size: 16px 16px;
+border-radius: 6px 6px 0 0;
+color: #34495e;
+padding: 10px 20px; }
+
+.todo ul {
+margin: 0;
+list-style-type: none;
+padding: 0;
+display: block; }
+
+.todo-name {
+color: #FFF;
+font-size: 17px;
+margin: 1px 0 3px; }
+
+.todo-name.clouds {
+color: #BDC3C7; }
+
+.todo li.todo-done {
+background: transparent 92% center no-repeat;
+background-size: 20px 20px;
+color: #1abc9c; }
+
+.todo li:first-child {
+margin-top: 0; }
+
+.todo li:last-child {
+border-radius: 0 0 6px 6px;
+padding-bottom: 18px; }
+
+.todo-wrap {
+background-size: 20px 20px;
+cursor: pointer;
+padding: 10px 18px;
+position: relative;
+-webkit-transition: 0.25s;
+-moz-transition: 0.25s;
+-o-transition: 0.25s;
+transition: 0.25s;
+-webkit-backface-visibility: hidden; }
+
+.one {
+background: #16A085; }
+
+.two {
+background: #2ECC71; }
+
+.three {
+background: #27AE60; }
+
+.four {
+background: #3498DB; }
+
+.five {
+background: #2980B9; }
+
+.six {
+background: #9B59B6; }
+
+.seven {
+background: #8E44AD; }
+
+.eight {
+background: #34495E; }
+
+.nine {
+background: #2C3E50; }
+
+.ten {
+background: #22313f; }
+
+.elleven {
+background: #F1C40F; }
+
+.twelve {
+background: #F39C12; }
+
+.thirteen {
+background: #E67E22; }
+
+.fourteen {
+background: #D35400; }
+
+.fifteen {
+background: #E74C3C; }
+
+.sixteen {
+background: #C0392B; }
+
+.seventeen {
+background: #ECF0F1; }
+
+.seventeen.clouds {
+color: #BDC3C7; }
+
+.eighteen {
+background: #BDC3C7; }
+
+.nineteen {
+background: #95A5A6; }
+
+.twenty {
+background: #7F8C8D; }
+
+

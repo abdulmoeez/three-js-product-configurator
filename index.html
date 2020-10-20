@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Color Customizer App</title>
+    <meta name="description" content="3d model color customizer app with Three.js." />
+    <meta name="keywords" content="three.js, color customizer, app, tutorial, 3d model, blender, javascript" />
+    <meta name="author" content="Abdul Moeez | @abdulmoeez.me" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <div class="span4">
+        <div class="todo mrm">
+          <div class="todo-header">
+            <h3 class="demo-panel-title">Flat Colors</h3>
+          </div>
+            <ul class="colors-list">
+            
+            </ul>
+        </div>
+      </div>
+    
+
+     <!-- The main three.js file -->
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js'></script>
+     <!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+     <script src='https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js'></script>
+     <!-- This is a simple to use extension for three.js that activates all the rotating, dragging and zooming controls we need for both mouse and touch, there isn't a clear CDN for this that I can find -->
+     <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+     <script src="script.js"></script>
+</body>
+</html>
