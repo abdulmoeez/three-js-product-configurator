@@ -146,4 +146,22 @@ background: #95A5A6; }
 .twenty {
 background: #7F8C8D; }
 
+#models{
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%,-50%);
+}
+#models .row{
+    display: flex;
+}
+#models img{
+    height: 100%;
+}
+#models .model{
+    border: 3px solid white;
+    cursor: pointer;
+    height: 100px;
+}
+
 
