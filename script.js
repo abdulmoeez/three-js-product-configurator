@@ -1,28 +1,6 @@
-var scene, camera, renderer, model, controls, colors, activeModal
-const MODEL_PATH = 'model/Table.glb'
-const MODEL_NAME = 'Table'
+var scene, camera, renderer, controls, colors, activeModal
+const MODEL_PATH = 'model/chair.glb'
 
-const MODELS = [
-
-  {
-    name: "One_Seater",
-    image:"./images/1_seater.png",
-    path:"./model/1_seater.glb"
-  },
-  {
-    name: "Two_Seater",
-    image:"./images/2_seater.png",
-    path:"./model/2_seater.glb"
-  },{
-    name: "Three_Seater",
-    image:"./images/3_seater.png",
-    path:"./model/3_seater.glb"
-  },{
-    name: "Table",
-    image:"./images/table.png",
-    path:"./model/Table.glb"
-  },
-]
 colors = [{
     color: '131417' },
   
@@ -122,7 +100,6 @@ colors = [{
 
 
 addColorPallete()
-addModels()
 main()
 animate()
 
@@ -189,14 +166,22 @@ function addModels(){
 function main(){
     scene = new THREE.Scene()
     scene.background = new THREE.Color(0xf1f1f1)
-    // scene.fog = new THREE.Fog(0xf1f1f1, 20, 100);
+    scene.fog = new THREE.Fog(0xf1f1f1, 20, 100);
 
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    camera.position.set(0, 0, -5)
+    camera.rotation.set(100, 0, 0)
 
     renderer = new THREE.WebGLRenderer();
     renderer.shadowMap.enabled = true;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize( window.innerWidth, window.innerHeight );
+
+    renderer.gammaInput = true;
+    renderer.gammaOutput = true;
+    renderer.shadowMap.enabled = true;
+    renderer.physicallyCorrectLights = true;
+    renderer.toneMapping = THREE.ReinhardToneMapping;
     document.body.appendChild( renderer.domElement );
     
     // Add controls
@@ -204,25 +189,22 @@ function main(){
     controls.maxPolarAngle = Math.PI / 2;
     controls.minPolarAngle = Math.PI / 3;
     controls.enableDamping = true;
-    controls.enablePan = false;
     controls.dampingFactor = 0.1;
     controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
     controls.autoRotateSpeed = 0.2; // 30
-    controls.update();
+
     addLight()
     addFloor()
-    addModel(MODEL_PATH, MODEL_NAME)
+    addModel(MODEL_PATH)
 
     // addModelDebug()
 
 }
 
 function createMaterial(color){
-    const mat = new THREE.MeshPhongMaterial({
+    const mat = new THREE.MeshStandardMaterial({
         color: parseInt('0x' + color),
-        shininess: 10
     })
-    console.log(activeModal)
     changeMaterial(activeModal, mat)
 }
 
@@ -248,21 +230,17 @@ function addFloor(){
 }
 
 function addLight(){
-    // Add lights
-    var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
-    hemiLight.position.set(0, 50, 0);
-    // Add hemisphere light to scene   
-    scene.add(hemiLight);
+  var spotLight = new THREE.SpotLight(0xffffff, 15, 100, 0.6, 1.5, 0.6); //colour, intensity, distance, angle, penumbra, decay
+  spotLight.position.set(0, 5, -2);
+  spotLight.target.position.set(0, 0, 0);
+  spotLight.castShadow = true;
+  scene.add(spotLight);
 
-    var dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
-    dirLight.position.set(-8, 12, 8);
-    dirLight.castShadow = true;
-    dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
-    // Add directional Light to scene    
-    scene.add(dirLight);
+  var ambient = new THREE.AmbientLight(0xffffff);
+  scene.add(ambient);
 }
 
-function addModel(model, name){
+function addModel(model){
     var loader = new THREE.GLTFLoader()
     loader.load(model, function(gltf){
       model = gltf.scene
@@ -276,11 +254,8 @@ function addModel(model, name){
           });
         
         scene.add(model)
-        model.position.y = -.65
-        camera.position.set(80, 63, -74)
-        camera.rotation.set(-2.4, 0.6, 2.6)
+        model.position.y = -1
     })
-    setActive(name)
 }
 
 function removeAllObjects(){
@@ -304,13 +279,3 @@ function addModelDebug(){
     camera.position.z = 5;
 }
 
-function setActive(name){
-  console.log(name)
-  MODELS.forEach(mod=>{
-    if(name === mod.name){
-      document.querySelector(`#${mod.name}`).style.border = '5px solid black'
-    }else{
-      document.querySelector(`#${mod.name}`).style.border = '3px solid white'
-    }
-  })
-}
