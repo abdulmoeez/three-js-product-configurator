@@ -1,4 +1,4 @@
-var scene, camera, renderer, controls, colors, activeModal
+var scene, camera, renderer, controls, colors, activeModel
 const MODEL_PATH = 'model/chair.glb'
 
 colors = [{
@@ -205,7 +205,7 @@ function createMaterial(color){
     const mat = new THREE.MeshStandardMaterial({
         color: parseInt('0x' + color),
     })
-    changeMaterial(activeModal, mat)
+    changeMaterial(activeModel, mat)
 }
 
 function changeMaterial(parent, mat){
@@ -244,7 +244,7 @@ function addModel(model){
     var loader = new THREE.GLTFLoader()
     loader.load(model, function(gltf){
       model = gltf.scene
-      activeModal = model
+      activeModel = model
 
         model.traverse(o => {
             if(o.isMesh){
